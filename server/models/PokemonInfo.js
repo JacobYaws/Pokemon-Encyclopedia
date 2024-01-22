@@ -40,15 +40,12 @@ const pokemonInfoSchema = new Schema(
         },
         types: [
             {
-                slot: {
-                    type: Number,
-                    required: true,
-                },
-                type: {
+                type: [{
                     name: {
                         type: String,
+                        required: false,
                     }
-                }
+                }]
             }
         ]
     }

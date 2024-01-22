@@ -25,7 +25,7 @@ db.once('open', async () => {
     //     let prePokeId = pokeUrl.slice(42)
     //     let pokeId = prePokeId.replace("/", "");
     // // const responseData = fetch(`https://pokeapi.co/api/v2/pokemon/${pokeId}/`) THIS WORKS
-    // // const responseData = fetch(`https://pokeapi.co/api/v2/pokemon/5/`) 
+    // // const responseData = fetch(`https://pokeapi.co/api/v2/pokemon/42/`) 
     // const responseData = fetch(`https://pokeapi.co/api/v2/pokemon/${pokeId}/`) 
 
     // .then(response => response.json())
@@ -37,11 +37,12 @@ db.once('open', async () => {
     // let name = data.name;
     // let types = data.types;
     // //    console.log(name); 
-    // console.log(types);
-
-    //    const individualPoke = {name: name, id: id, sprites: sprites, game_indices: game_indices, abilities: abilities, types: types}
+    // let processedTypesArray = []
+    // let processedTypes = types.forEach(element => processedTypesArray.push(element.type))
+    //     console.log(processedTypesArray)
+    //    const individualPoke = {name: name, id: id, sprites: sprites, game_indices: game_indices, abilities: abilities, types: processedTypesArray}
     //    eachPokeArray.push(individualPoke)
-    //    console.log(eachPokeArray);
+    //   //  console.log(eachPokeArray);
     //    fs.writeFile('gen1EachSeeds.txt', JSON.stringify(eachPokeArray), (err) => {
     //     if (err) {
     //         console.log(err)
