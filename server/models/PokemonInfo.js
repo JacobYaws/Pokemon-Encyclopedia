@@ -4,29 +4,19 @@ const pokemonInfoSchema = new Schema(
     { 
         abilities: [
             {
-                ability: {
-                    name: {
-                        type: String,
-                        required: true,
-                    }
-                }
+                type: String,
+                required: true,
             }
         ],
         game_indices: [
             {
-                version: {
-                    name: {
                         type: String,
                         required: true,
-                    }
-                }
             }
         ],
         sprites: {
-            // front_default: {
                 type: String,
                 required: true,
-            // }
         },
         id: {
             type: Number,
@@ -40,12 +30,8 @@ const pokemonInfoSchema = new Schema(
         },
         types: [
             {
-                type: [{
-                    name: {
                         type: String,
                         required: false,
-                    }
-                }]
             }
         ]
     }

@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.card {
+  display: flex;
+  max-height: 100vh;
+  overflow: hidden;
+  orientation: horizontal;
+  // align-items: center;
+  // justify-content: center;
+  // flex-direction: column;
+  // flex-shrink: 0;
+  // flex-wrap: nowrap
+}
+
+.card-body {
+  max-width: 50%;
+ }
+
+.card-img {
+  max-width: 50%;
+  max-height: 50%;
+}
+
+.card-row {
+  max-width: 25%;
+  max-height: 25%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-shrink: 1;
+}
+
+#pokelist {
+  display: flex;
+  max-width: 75%;
+}
+
+#abilities, #games, #types {
+  display: flex;
+  background-color: lightblue;
+  flex-wrap: wrap;
+  // margin: 5em;
+  gap: 1em;
+}
+
+

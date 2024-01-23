@@ -3,6 +3,8 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
 type Query {
     users: [User]!
+    pokemoninfo: [PokemonInfo]
+    Pokemon: [Pokemon]
 }
 
 type User {
@@ -11,11 +13,65 @@ type User {
     email: String
 }
 
-type Pokemnon {
+type Pokemon {
     _id: ID
     name: String
     url: String
 }
+
+type Abilities {
+    ability: [Ability]
+}
+type Ability {
+    name: String
+}
+
+
+type Game_Indices {
+    version: String
+}
+
+type Types {
+    name: String
+}
+
+
+type PokemonInfo {
+    _id: ID
+    id: Int
+    sprites: String
+    name: String
+    abilities: [String]
+    game_indices: [String]
+    types: [String]
+}
+
+
+
+
 `
 
 module.exports = typeDefs
+
+// game_indices: [
+//     {
+//         version: {
+//             name: String
+//         }
+//         _id: ID
+
+//     }
+// ]
+// sprites: String
+// id: Int
+// name: String
+// types: [
+//     {
+//         type: {
+//             name: String
+//         }
+//         _id: ID
+
+//     }
+// ]
+// }

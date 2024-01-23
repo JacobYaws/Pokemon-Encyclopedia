@@ -30,17 +30,31 @@ db.once('open', async () => {
 
     // .then(response => response.json())
     // .then(data => {
-    // let abilities = data.abilities;
+    // // let abilities = data.abilities;
+    // let abilities = []
+    
+    // let abilities2 = data.abilities.forEach(ability =>  {
+    //   // console.log(ability)
+    //   // console.log(ability.ability.name)
+    //   abilities.push(ability.ability.name)
+    // }
+    //   )
+    
     // let game_indices = data.game_indices;
     // let sprites = data.sprites.front_default;
     // let id = data.id;
     // let name = data.name;
     // let types = data.types;
+    // // console.log(abilities)
     // //    console.log(name); 
     // let processedTypesArray = []
-    // let processedTypes = types.forEach(element => processedTypesArray.push(element.type))
-    //     console.log(processedTypesArray)
-    //    const individualPoke = {name: name, id: id, sprites: sprites, game_indices: game_indices, abilities: abilities, types: processedTypesArray}
+    // let processedGameIndexArray = []
+    // game_indices.forEach(game => processedGameIndexArray.push(game.version.name))
+    // // console.log(processedGameIndexArray)
+    // let processedTypes = types.forEach(element => processedTypesArray.push(element.type.name))
+    // // console.log(processedTypesArray)
+    //     // console.log(processedTypesArray)
+    //    const individualPoke = {name: name, id: id, sprites: sprites, game_indices: processedGameIndexArray, abilities: abilities, types: processedTypesArray}
     //    eachPokeArray.push(individualPoke)
     //   //  console.log(eachPokeArray);
     //    fs.writeFile('gen1EachSeeds.txt', JSON.stringify(eachPokeArray), (err) => {
