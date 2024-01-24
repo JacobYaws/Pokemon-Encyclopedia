@@ -1,7 +1,8 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_POKEMON } from '../utils/queries';
 import React, { useState, useEffect } from 'react';
-import { Container, Col, Row, Card } from 'react-bootstrap'
+import { Container, Col, Row, Card, Badge, Accordion } from 'react-bootstrap'
+import Header from "../components/Header"
 
 const Home = () => {
     const {data, loading, error} = useQuery(QUERY_POKEMON);
@@ -14,8 +15,12 @@ const Home = () => {
         }
     })
     let newPokeObjectArray = [];
-    // console.log(pokeData)
-    pokeData?.forEach(element => {
+    let newPokeData;
+    newPokeData = pokeData;
+    let newPokeDataArray = [];
+    newPokeDataArray = newPokeData?.slice().sort((a, b) => a.id - b.id)
+    newPokeDataArray?.forEach(element => {
+        console.log(element)
         let elementName = element.name;
             let firstUpper = (elementName.charAt(0)).toUpperCase();
             let endName = elementName.slice(1);
@@ -69,78 +74,72 @@ const Home = () => {
         let newPokeObject = { name: newName, game_indices: newGameIndicesArray, id: element.id, sprites: element.sprites, abilities: newAbilitiesArray, types: newTypesArray}    
         newPokeObjectArray.push(newPokeObject);
     })
-    console.log(newPokeObjectArray.sort())
+    // console.log(newPokeObjectArray.sort())
 
-    // const pokemonData = data?.pokemoninfo;
-
-    // const processPokemonData = pokemonData?.forEach(element => {
-    //     console.log(element.id)
-    //     console.log(element.name)
-    // })
-
-    // useEffect(() => {
-    //     useQuery(QUERY_POKEMON)
-    // })
-
-
-    // pokemonData.forEach(element => pokemonDataArray.push(element))
-    // console.log(pokemonDataArray);
-    // console.log(typeof pokemonData)
     return (
+        <>
+        <Header />
         
         <Container id="pokelist">
             {loading ? (
                 <></>
          ) : (
-            <Col>
+            // <Row id="card-container">
+            <Row className="card-container">
             {newPokeObjectArray?.map((pokemon) => (
-                <Card key={pokemon.id}>
-        <Card.Header>{pokemon.name}</Card.Header>
-        <Row className="card-row">
-          
+                <Col id="cardcol" md='3'>
+            <Card className="pokeinfo" key={pokemon.id} border='dark'>
+        <Card.Header>{pokemon.name} <span>ID: {pokemon.id}</span></Card.Header>
+        <Row className="image-stats">
+            <Col id="photo">
         <Card.Img src={pokemon.sprites}></Card.Img>
-  
+        </Col>
         <Card.Body>
+          
+        <Accordion defaultActiveKey={[]} alwaysOpen>
+            <Accordion.Item eventKey='0'>
+                <Accordion.Header>Abilities</Accordion.Header>
+                <Accordion.Body>
+                {pokemon.abilities.map((abilities) => (
+                
+                <div className="mapped-item" key={abilities}><Badge id="abilities-badge">{abilities}</Badge></div>
+            ))}
+            </Accordion.Body>
+            </Accordion.Item>
 
-        <Container id="abilities">
-            {pokemon.abilities.map((abilities) => (
-            <p className="mapped-item" key={abilities}>{abilities}</p>
-        ))}
-        </Container>
+            <Accordion.Item eventKey='1'>
+                <Accordion.Header>Game Versions</Accordion.Header>
+                <Accordion.Body>
+                {pokemon.game_indices.map((games) => (
+                
+                <div className="mapped-item" key={games}><Badge id="games-badge">{games}</Badge></div>
+            ))}
+            </Accordion.Body>
+            </Accordion.Item>
 
-        <Container id="games">
-            {pokemon.game_indices.map((games) => (
-            <p className="mapped-item" key={games}>{games}</p>
-        ))}
-        </Container>
-        
-        <Container id="types">
-            {pokemon.types.map((types) => (
-            <p className="mapped-item" key={types}>{types}</p>
-        ))}
-        </Container>
+            <Accordion.Item eventKey='2'>
+                <Accordion.Header>Types</Accordion.Header>
+                <Accordion.Body>
+                {pokemon.types.map((types) => (
+                
+                <div className="mapped-item" key={types}><Badge id="types-badge">{types}</Badge></div>
+            ))}
+            </Accordion.Body>
+            </Accordion.Item>
 
+        </Accordion>
+ 
         </Card.Body>
         </Row>
                 </Card>
+                </Col>
     ))}
-        </Col>
-        //     <div>
-        //         {pokemonData.map((pokemon) => (
-        //             <div>
-        //     <li key={pokemon.id}><h1>{pokemon.name}</h1></li>
-        //     <li><h2>{pokemon.abilities}</h2></li>
-        //     <li><h3>{pokemon.game_indices}</h3></li>
-            
-        //     <li><h4>{pokemon.types}</h4></li>
-        //     <li><h5>{pokemon.id}</h5></li>
-            
-        //             </div>
-        // ))}
-        //     </div>
+        </Row>
+  
          )}
         
         </Container>
+        </>
     )
 }
 
