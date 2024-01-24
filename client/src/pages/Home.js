@@ -14,7 +14,6 @@ const Home = () => {
         }
     })
     let newPokeObjectArray = [];
-
     // console.log(pokeData)
     pokeData?.forEach(element => {
         let elementName = element.name;
