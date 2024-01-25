@@ -11,7 +11,7 @@ body {
 #root {
   font-family: 'Roboto', sans-serif;
   margin: 0 auto;
-  background-color: #E0D100;
+  background-color: #e7d800;
 }
 
 code {
@@ -26,7 +26,7 @@ code {
 
 #cardcol {
   margin-bottom: 1em;
-  flex-grow: 1;
+  // flex-grow: 1;
 }
 
 #card-container {
@@ -41,6 +41,7 @@ code {
   flex-direction: column;
   gap: 1em;
   background-image: url("./assets/background-image.png");
+  
 }
 
 .image-stats {
@@ -59,10 +60,11 @@ code {
   border-style: inset;
 }
 
-.accordion-item {
-  margin-bottom: 0.5em;
+.general-info {
+  margin: 1em;  
 }
 
+.info-tab {
 .accordion-button {
   background-image: url('./assets/background-image-2.png')
 }
@@ -70,13 +72,17 @@ code {
 .accordion-button:not(.collapsed) {
   background-image: url('./assets/background-image-2.png')
 }
-.accordion-body {
+}
+
+.general-info-body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 0.2em;
   justify-content: center;
+  background-image: url('./assets/background-image-2.png');
  }
+
 
 
 .card-header {
@@ -87,11 +93,12 @@ code {
 }
 
 
+
 #pokelist {
   padding: 1em;
   margin-top: 1em;
   display: flex;
-  max-width: 95%;
+  max-width: 90%;
   background-color: #F7EF00;
   border-radius: 1em;
   // flex-wrap: wrap;
@@ -105,5 +112,52 @@ code {
   max-width: inherit;
 }
 
+#filter-item {
+  border: none;
+  border-bottom: 1px;
+}
+
+#filters {
+  // padding: 2em;
+  box-sizing: border-box;
+  padding-right: 0.5em;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  background-color:#ff5454;
+  min-width: percentage($number: calc(1/6));
+  max-width: percentage($number: calc(1/6));
+  text-align: center;
+  padding-left: 2em;
+  gap: 1em;
+}
 
 
+#filter-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.accordion-header {
+  border: none;
+}
+
+.filter-tab {
+  .accordion-button {
+    // background-image: url('./assets/background-image-2.png')
+    background-color: #00e7dc;
+    border-color: #00e7dc;
+    --bs-accordion-inner-border-radius: 0;
+  }
+  
+  .accordion-button:not(.collapsed) {
+    // background-image: url('./assets/background-image-2.png')
+  }
+  }
+
+
+
+#filter-badge {
+  font-size: 2px;
+}
