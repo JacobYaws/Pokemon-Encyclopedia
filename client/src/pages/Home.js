@@ -13,7 +13,7 @@ const Home = () => {
     const {data, loading, error} = useQuery(QUERY_POKEMON, {staleTime: 60000});
     const [pokeData, setPokeData] = useState(data?.pokemoninfo);
     const [filters, setFilters] = useState(filterArray);
-    const [checked, setChecked] = useState(false);
+    const [filterClick, setFilterClick] = useState(false);
     const [processedFilteredArray, setProcessedFilterArray] = useState(filteredResultsArray);
     useEffect(() => {
         if(data) {
@@ -24,6 +24,7 @@ const Home = () => {
 
     }, [data])
     // console.log(filters.length)
+    console.log(filters)
 
     // let processedFilteredArray = [];
 
@@ -114,53 +115,56 @@ const Home = () => {
                 let switchName = e.target.parentElement.innerText;
                 let switchId = e.target.id;
                 let switchChecked = e.target.checked;
-                setChecked(switchChecked)
+                console.log(switchName)
+                console.log(switchChecked)
+                setFilterClick(!filterClick)
                 let filterObject = {filterName: switchName, filterId: switchId, filterChecked: switchChecked}
 
                 if (switchChecked === true) { 
-                filterArray.push(filterObject)
-                setFilters(filterArray)
+                    console.log("here")
+                    filterArray.push(filterObject)
+                    setFilters(filterArray)
                 } else {
                     filterArray.splice(filterArray.findIndex(element => element.filterName == switchName), 1)
                     setFilters(filterArray);
                 }
                 let testArray = []
-                filters.forEach(filter => {
-                    let id = filter.filterId;
-                    let name = filter.filterName;
+                // filters.forEach(filter => {
+                //     let id = filter.filterId;
+                //     let name = filter.filterName;
                     
-                    if (id === 'type-switch') {
-                // filteredResultsArray.filter(item => {
+                //     if (id === 'type-switch') {
+                // // filteredResultsArray.filter(item => {
                    
                         
-                //     if (item.types.includes(name)) {
-                //         console.log('yes')
-                //     }})
-                        newPokeObjectArray.filter((element) => {
-                            // console.log(filteredResultsArray)
-                            // console.log(!filteredResultsArray.some(item => item = element))
-                            // console.log(element)
-                            let pokeElement = element
-                            console.log(pokeElement)
-                            console.log(filteredResultsArray.find(item => console.log(newPokeObjectArray.some(item))))
-                            if (element.types.indexOf(name) !== -1 && (filteredResultsArray.find(item => item == pokeElement) == undefined)) {
-                                filteredResultsArray.push(element);
-                            } 
-                        })
-                    } else if (id === 'ability-switch') {
-                        console.log(name);
-                        console.log(newPokeObjectArray)
-                        newPokeObjectArray.filter((element) => {
-                            if (element.abilities.indexOf(name) == -1) {
-                                console.log("hit")
-                                filteredResultsArray.push(element);
-                            }
-                        })
+                // //     if (item.types.includes(name)) {
+                // //         console.log('yes')
+                // //     }})
+                //         newPokeObjectArray.filter((element) => {
+                //             // console.log(filteredResultsArray)
+                //             // console.log(!filteredResultsArray.some(item => item = element))
+                //             // console.log(element)
+                //             let pokeElement = element
+                //             // console.log(pokeElement)
+                //             // console.log(filteredResultsArray.find(item => console.log(newPokeObjectArray.some(item))))
+                //             if (element.types.indexOf(name) !== -1 && (filteredResultsArray.find(item => item == pokeElement) == undefined)) {
+                //                 filteredResultsArray.push(element);
+                //             } 
+                //         })
+                //     } else if (id === 'ability-switch') {
+                //         // console.log(name);
+                //         // console.log(newPokeObjectArray)
+                //         newPokeObjectArray.filter((element) => {
+                //             if (element.abilities.indexOf(name) == -1) {
+                //                 // console.log("hit")
+                //                 filteredResultsArray.push(element);
+                //             }
+                //         })
     
-                    }
+                //     }
     
-                })
-                console.log(filteredResultsArray)
+                // })
+                // console.log(filteredResultsArray)
                 // filteredResults();
                 // console.log(filteredResultsArray)
 
@@ -254,9 +258,39 @@ const Home = () => {
             // <Row id="card-container">
             <Row className="card-container">
             
-            {filters.length == 0 ? ( 
-            <>
-            {newPokeObjectArray?.map((pokemon) => (
+            {/* {filters.length == 0 ? ( 
+            <> */}
+            {newPokeObjectArray?.filter((pokemon) => {
+                let displayPokemon = false
+                // console.log(pokemon)
+
+                filters.forEach((filter) => {
+                    console.log("filter loop: " + filter.filterName)
+                    console.log(displayPokemon)
+                    let filterMatchCount = 0
+                    if(!displayPokemon) {
+                        console.log(filter)
+                        switch(filter.filterId) {
+                            case ("ability-switch") :
+                                console.log("ability filter")
+                                if(pokemon.abilities?.find((ability) => ability == filter.filterName)) {
+                                    filterMatchCount++
+                                }
+                                break;
+                            case ("type-switch") :
+                                console.log("type filter")
+                                if(pokemon.types?.find((type) => type == filter.filterName)) {
+                                    filterMatchCount++
+                                }
+                                break;
+                        }
+                        displayPokemon = filterMatchCount > 0
+                }
+                })
+                console.log(displayPokemon)
+                return displayPokemon || filters.length == 0
+        
+            }).map((pokemon) => (
                 <Col id="cardcol" md='4'>
                     
             <Card className="pokeinfo" key={pokemon.id} border='dark' style={{display: pokemon.hidden ? 'none' : 'show'}}>
@@ -307,10 +341,10 @@ const Home = () => {
     ))}
 
 
-    </>
+    {/* </>
     ) : (
         <>Hello</>
-    )}
+    )} */}
         </Row>
   
          )}
