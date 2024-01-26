@@ -4,7 +4,8 @@ const typeDefs = gql`
 type Query {
     users: [User]!
     pokemoninfo: [PokemonInfo]
-    Pokemon: [Pokemon]
+    singlepokemoninfo(name: String): PokemonInfo
+    pokemon: [Pokemon]
 }
 
 type User {

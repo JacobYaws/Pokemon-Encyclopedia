@@ -2,13 +2,10 @@ import { useQuery } from '@apollo/client';
 import { QUERY_POKEMON } from '../utils/queries';
 import React, { useState, useEffect } from 'react';
 import { Container, Col, Row, Card, Badge, Accordion, AccordionBody, Form } from 'react-bootstrap'
-import Header from "../components/Header"
-
 let filterArray = [];
 let filteredResultsArray = [];
 
 const Home = () => {
-
 
     const {data, loading, error} = useQuery(QUERY_POKEMON, {staleTime: 60000});
     const [pokeData, setPokeData] = useState(data?.pokemoninfo);
@@ -23,10 +20,7 @@ const Home = () => {
         setProcessedFilterArray(filteredResultsArray)
 
     }, [data])
-    // console.log(filters.length)
     console.log(filters)
-
-    // let processedFilteredArray = [];
 
     let abilitiesArray = [];
     let typesArray = [];
@@ -70,9 +64,7 @@ const Home = () => {
                     let newAbilities = firstUpper + endAbility
                     newAbilitiesArray.push(newAbilities);
                     abilitiesArray.push(newAbilities);
-                    
                 })
-
                 let types = element.types;
                 let newTypesArray = [];
                     types.forEach(type => {
@@ -82,12 +74,9 @@ const Home = () => {
                         newTypesArray.push(newType);
                         typesArray.push(newType);
                     })
-
-                
                 let newPokeObject = { name: newName, game_indices: newGameIndicesArray, id: element.id, sprites: element.sprites, abilities: newAbilitiesArray, types: newTypesArray, hidden: false}    
                 newPokeObjectArray.push(newPokeObject);
             })
-
             let protoAbilitiesFilters = [];
             let protoTypesFilters = [];
             abilitiesArray.forEach((element) => {
@@ -128,82 +117,16 @@ const Home = () => {
                     filterArray.splice(filterArray.findIndex(element => element.filterName == switchName), 1)
                     setFilters(filterArray);
                 }
-                let testArray = []
-                // filters.forEach(filter => {
-                //     let id = filter.filterId;
-                //     let name = filter.filterName;
-                    
-                //     if (id === 'type-switch') {
-                // // filteredResultsArray.filter(item => {
-                   
-                        
-                // //     if (item.types.includes(name)) {
-                // //         console.log('yes')
-                // //     }})
-                //         newPokeObjectArray.filter((element) => {
-                //             // console.log(filteredResultsArray)
-                //             // console.log(!filteredResultsArray.some(item => item = element))
-                //             // console.log(element)
-                //             let pokeElement = element
-                //             // console.log(pokeElement)
-                //             // console.log(filteredResultsArray.find(item => console.log(newPokeObjectArray.some(item))))
-                //             if (element.types.indexOf(name) !== -1 && (filteredResultsArray.find(item => item == pokeElement) == undefined)) {
-                //                 filteredResultsArray.push(element);
-                //             } 
-                //         })
-                //     } else if (id === 'ability-switch') {
-                //         // console.log(name);
-                //         // console.log(newPokeObjectArray)
-                //         newPokeObjectArray.filter((element) => {
-                //             if (element.abilities.indexOf(name) == -1) {
-                //                 // console.log("hit")
-                //                 filteredResultsArray.push(element);
-                //             }
-                //         })
-    
-                //     }
-    
-                // })
-                // console.log(filteredResultsArray)
-                // filteredResults();
-                // console.log(filteredResultsArray)
 
     }
-    // const filteredResults = () => {
-    //     console.log(newPokeObjectArray)
-    //     console.log(filteredResultsArray)
-    //     // newPokeObjectArray.some(item => console.log(filteredResultsArray?.includes(item)))
-
-    //         console.log(filteredResultsArray)
-    //         filters.forEach(filter => {
-    //             const id = filter.filterId;
-    //             const name = filter.filterName;
-    //             if (id === 'type-switch') {
-    //                 newPokeObjectArray.filter((element) => {
-    //                     // console.log(filteredResultsArray.findIndex(element))
-    //                     if (element.types.indexOf(name) !== -1) {
-    //                         filteredResultsArray.push(element);
-    //                     } 
-    //                 })
-    //             } else if (id === 'ability-switch') {
-    //                 console.log(name);
-    //                 console.log(newPokeObjectArray)
-    //                 newPokeObjectArray.filter((element) => {
-    //                     if (element.abilities.indexOf(name) == -1) {
-    //                         console.log("hit")
-    //                         filteredResultsArray.push(element);
-    //                     }
-    //                 })
-
-    //             }
-
-    //         })
-    // }
+        const handleClick = (event) => {
+            const targetName = event.currentTarget.id.toLowerCase();
+            console.log(targetName)
+            window.location.href = `/pokemon/${targetName}`
+        }
     return (
         <>
-        <Header />
         <Row>
-            
             <Col id="filters" md='2'>
                 <h3>Filters</h3>
                
@@ -221,7 +144,6 @@ const Home = () => {
                               key={`${type}`}
                               onChange={handleChange}
                             /></Form>
-                            // <div>{ability}</div>
                         ))}
                     </AccordionBody>
                 </Accordion.Item>
@@ -236,11 +158,8 @@ const Home = () => {
                               id="ability-switch"
                               label={`${ability}`}
                               key={`${ability}`}
-                            //   value={ability}
-                            //   defaultChecked={switchState}
                               onChange={handleChange}
                             /></Form>
-                            // <div>{ability}</div>
                         ))}
                     </AccordionBody>
                 </Accordion.Item>
@@ -257,13 +176,8 @@ const Home = () => {
          ) : (
             // <Row id="card-container">
             <Row className="card-container">
-            
-            {/* {filters.length == 0 ? ( 
-            <> */}
             {newPokeObjectArray?.filter((pokemon) => {
                 let displayPokemon = false
-                // console.log(pokemon)
-
                 filters.forEach((filter) => {
                     console.log("filter loop: " + filter.filterName)
                     console.log(displayPokemon)
@@ -289,87 +203,56 @@ const Home = () => {
                 })
                 console.log(displayPokemon)
                 return displayPokemon || filters.length == 0
-        
             }).map((pokemon) => (
                 <Col id="cardcol" md='4'>
-                    
-            <Card className="pokeinfo" key={pokemon.id} border='dark' style={{display: pokemon.hidden ? 'none' : 'show'}}>
+            <Card className="pokeinfo" key={pokemon.id} border='dark' >
         <Card.Header>{pokemon.name} <span>ID: {pokemon.id}</span></Card.Header>
-        <Row className="image-stats">
-            <Col id="photo">
-        <Card.Img src={pokemon.sprites}></Card.Img>
+        <Row className="image-stats" onClick={handleClick} id={pokemon.name}>
+            <Col id="photo" >
+        <Card.Img src={pokemon.sprites} ></Card.Img>
         </Col>
         <Card.Body>
-          
-        <Accordion defaultActiveKey={[]} alwaysOpen>
-            <Accordion.Item className="general-info" eventKey='0'>
-                <Accordion.Header className="info-tab">Abilities</Accordion.Header>
-                <Accordion.Body className="general-info-body">
-                {pokemon.abilities.map((abilities) => (
-                
-                <div className="mapped-item" key={abilities}><Badge id="abilities-badge">{abilities}</Badge></div>
-            ))}
-            </Accordion.Body>
-            </Accordion.Item>
+            <Accordion defaultActiveKey={[]} alwaysOpen>
+                <Accordion.Item className="general-info" eventKey='0'>
+                    <Accordion.Header className="info-tab">Abilities</Accordion.Header>
+                    <Accordion.Body className="general-info-body">
+                    {pokemon.abilities.map((abilities) => (
+                    <div className="mapped-item" key={abilities}><Badge id="abilities-badge">{abilities}</Badge></div>
+                ))}
+                </Accordion.Body>
+                </Accordion.Item>
 
-            <Accordion.Item className="general-info" eventKey='1'>
-                <Accordion.Header className="info-tab">Game Versions</Accordion.Header>
-                <Accordion.Body className="general-info-body">
-                {pokemon.game_indices.map((games) => (
-                
-                <div className="mapped-item" key={games}><Badge id="games-badge">{games}</Badge></div>
-            ))}
-            </Accordion.Body>
-            </Accordion.Item>
+                <Accordion.Item className="general-info" eventKey='1'>
+                    <Accordion.Header className="info-tab">Game Versions</Accordion.Header>
+                    <Accordion.Body className="general-info-body">
+                    {pokemon.game_indices.map((games) => (
+                    <div className="mapped-item" key={games}><Badge id="games-badge">{games}</Badge></div>
+                ))}
+                </Accordion.Body>
+                </Accordion.Item>
 
-            <Accordion.Item className="general-info" eventKey='2'>
-                <Accordion.Header className="info-tab">Types</Accordion.Header>
-                <Accordion.Body className="general-info-body">
-                {pokemon.types.map((types) => (
-                
-                <div className="mapped-item" key={types}><Badge id="types-badge">{types}</Badge></div>
-            ))}
-            </Accordion.Body>
-            </Accordion.Item>
+                <Accordion.Item className="general-info" eventKey='2'>
+                    <Accordion.Header className="info-tab">Types</Accordion.Header>
+                    <Accordion.Body className="general-info-body">
+                    {pokemon.types.map((types) => (
+                    <div className="mapped-item" key={types}><Badge id="types-badge">{types}</Badge></div>
+                ))}
+                </Accordion.Body>
+                </Accordion.Item>
 
-        </Accordion>
- 
+            </Accordion> 
         </Card.Body>
         </Row>
                 </Card>
                 </Col>
     ))}
-
-
-    {/* </>
-    ) : (
-        <>Hello</>
-    )} */}
         </Row>
-  
          )}
-        
         </Container>
         </Col>
         </Row>
-
-
-        {/* <Form>
-      <Form.Check // prettier-ignore
-        type="switch"
-        id="custom-switch"
-        label="Check this switch"
-      /></Form>
-      <Form>
-      <Form.Check // prettier-ignore
-        type="switch"
-        id="custom-switch"
-        label="Check this switch"
-      /></Form> */}
-
-
         </>
     )
 }
 
-export default Home
+export default Home;

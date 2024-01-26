@@ -19,23 +19,45 @@ code {
     monospace;
 }
 
+#pokelist {
+  padding: 1em;
+  margin-top: 1em;
+  display: flex;
+  max-width: 90%;
+  background-color: #F7EF00;
+  border-radius: 1em;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
 .card {
   display: flex;
   flex-direction: column;
 }
 
+.card-img:hover {
+  cursor: pointer;
+}
+
 #cardcol {
   margin-bottom: 1em;
   // flex-grow: 1;
+  // flex-basis:initial;
+  // min-width: 25%;
+  // width:max-content;
+  // flex-grow: initial;
 }
 
-#card-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: space-between;
+.card-container {
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: space-between;
+  // align-items: space-between;
   flex-grow: 1;
+  max-width: inherit;
+  // background-color: black;
 }
+
 .pokeinfo {
   display: flex;
   flex-direction: column;
@@ -94,16 +116,7 @@ code {
 
 
 
-#pokelist {
-  padding: 1em;
-  margin-top: 1em;
-  display: flex;
-  max-width: 90%;
-  background-color: #F7EF00;
-  border-radius: 1em;
-  // flex-wrap: wrap;
-  // flex-shrink: 0;
-}
+
 
 #abilities, #games, #types {
   display: flex;
@@ -160,4 +173,17 @@ code {
 
 #filter-badge {
   font-size: 2px;
+}
+
+#single-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+#single-img {
+  width: 20em;
+  background-image: url('./assets/background-image.png');
+
+}
+#single-img-col {
 }

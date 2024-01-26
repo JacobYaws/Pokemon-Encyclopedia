@@ -11,9 +11,11 @@ import {
   createHttpLink,
 } from '@apollo/client';
 
-import { setContext } from '@apollo/client/link/context'
+import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './pages/Home'
+import Home from './pages/Home';
+import Pokemon from './pages/Pokemon';
+import Header from './components/Header';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -41,8 +43,10 @@ function App() {
     <ApolloProvider client={client}>
     <Router>
       <>
+      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/pokemon/:name" component={Pokemon} />
         </Switch>
       </>
     </Router>

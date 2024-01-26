@@ -9,7 +9,11 @@ const resolvers = {
         },
         pokemoninfo: async () => {
             return PokemonInfo.find()
-        }
+        },
+        singlepokemoninfo: async (parent, { name }) => {
+            console.log(name)
+            return PokemonInfo.findOne({ name: name })
+        },
     }
 }
 
