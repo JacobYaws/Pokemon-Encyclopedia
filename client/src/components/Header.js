@@ -6,10 +6,14 @@ import { Container, Button, Form, Nav, Navbar, NavDropdown, Col } from 'react-bo
 
 
 function Header() {
+  const handleFormSubmit = () => {
+
+  }
+  
     return (
       <Navbar expand="lg" className="bg-body-tertiary">
-        <Container fluid>
-          <Navbar.Brand href="#">PokeDex</Navbar.Brand>
+        <Container id="navbar-container" fluid>
+          <Navbar.Brand href="/" id="main-brand">PokeDex</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -17,9 +21,9 @@ function Header() {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
-              <NavDropdown title="Filters" id="navbarScrollingDropdown">
+              {/* <Nav.Link href="#action1">Home</Nav.Link>
+              <Nav.Link href="#action2">Link</Nav.Link> */}
+              {/* <NavDropdown title="Filters" id="navbarScrollingDropdown"> */}
 
                 {/* <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">
@@ -29,11 +33,11 @@ function Header() {
                 <NavDropdown.Item href="#action5">
                   Something else here
                 </NavDropdown.Item> */}
-              </NavDropdown>
+              {/* </NavDropdown> */}
 
 
-              <Nav.Link href="#" disabled>
-                Link
+              <Nav.Link href="/">
+                Home
               </Nav.Link>
             </Nav>
             <Form className="d-flex">
@@ -43,7 +47,7 @@ function Header() {
                 className="me-2"
                 aria-label="Search"
               />
-              <Button variant="outline-success">Search</Button>
+              <Button variant="outline-success" onClick={handleFormSubmit}>Search</Button>
             </Form>
           </Navbar.Collapse>
         </Container>

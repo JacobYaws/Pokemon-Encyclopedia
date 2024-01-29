@@ -12,7 +12,6 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0 auto;
   background-color: #e7d800;
-  
 }
 
 code {
@@ -20,15 +19,30 @@ code {
     monospace;
 }
 
+#main-container {
+  flex-wrap: nowrap;
+  min-width: 100% !important;
+}
+
+#navbar-container {
+  padding: 0 10%;
+  // min-width: 100% !important;
+  // background-position-y: fixed !important;
+}
+
 #pokelist {
-  padding: 1em;
-  margin-top: 1em;
   display: flex;
-  max-width: 90%;
+  margin-top: 2em;
+  padding: 1em;
+  display: flex;
+  width: 90%;
   background-color: #F7EF00;
   border-radius: 1em;
   flex-wrap: wrap;
-  flex-grow: 1;
+  // flex-grow: 1;
+  align-items: center;
+  // border-style: solid;
+  flex-direction: column;
 }
 
 .card {
@@ -135,6 +149,7 @@ code {
 #filter-item {
   border: none;
   border-bottom: 1px;
+  height: fit-content;
 }
 
 #filters {
@@ -146,12 +161,17 @@ code {
   flex-direction: column;
   background-color:#ff5454;
   min-width: percentage($number: calc(1/6));
-  max-width: percentage($number: calc(1/6));
+  // max-width: percentage($number: calc(1/6));
+  position: inherit;
   text-align: center;
-  padding-left: 2em;
+  padding-left: 1em;
   gap: 1em;
   #filters-header {
     font-weight: 600;
+  }
+  .accordion-body {
+    padding: 1em;
+    margin-left: -0.5em;
   }
 }
 
@@ -178,9 +198,7 @@ code {
 
   }
   
-  .accordion-button:not(.collapsed) {
-    // background-image: url('./assets/background-image-2.png')
-  }
+
   }
 
 
@@ -308,6 +326,36 @@ code {
   text-align: center;
   height: fit-content;
   flex-wrap: wrap;
+}
+
+@media screen and (max-width: 992px) {
+  #main-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  #filters {
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    gap: 2em;
+  }
+  #filter-accordion {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    margin-bottom: 1em;
+    gap: 2em;
+  }
+
+  
+
+  .accordion-body {
+    height: 15em !important;
+    overflow-y: scroll;
+  }
+  
 }
 
 @media screen and (max-width: 576px) {

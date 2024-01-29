@@ -126,14 +126,14 @@ const Home = () => {
         }
     return (
         <>
-        <Row>
+        <Row id="main-container">
             <Col id="filters" md='2'>
                 <h3 id="filters-header">Filters</h3>
                
                 <Accordion id="filter-accordion" defaultActiveKey={[]} alwaysOpen>
                 <Accordion.Item id="filter-item" eventKey='0'>
                     <Accordion.Header className="filter-tab">Types</Accordion.Header>
-                    <AccordionBody>
+                    <AccordionBody id="navbarScroll">
                         {typesFilters.map((type) => (
                             <Form>
                             <Form.Check // prettier-ignore
