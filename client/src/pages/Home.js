@@ -128,7 +128,7 @@ const Home = () => {
         <>
         <Row>
             <Col id="filters" md='2'>
-                <h3>Filters</h3>
+                <h3 id="filters-header">Filters</h3>
                
                 <Accordion id="filter-accordion" defaultActiveKey={[]} alwaysOpen>
                 <Accordion.Item id="filter-item" eventKey='0'>
@@ -206,10 +206,10 @@ const Home = () => {
             }).map((pokemon) => (
                 <Col id="cardcol" md='4'>
             <Card className="pokeinfo" key={pokemon.id} border='dark' >
-        <Card.Header>{pokemon.name} <span>ID: {pokemon.id}</span></Card.Header>
-        <Row className="image-stats" onClick={handleClick} id={pokemon.name}>
+        <Card.Header><h4>{pokemon.name}</h4> <h5>{pokemon.id}</h5></Card.Header>
+        <Row className="image-stats" >
             <Col id="photo" >
-        <Card.Img src={pokemon.sprites} ></Card.Img>
+        <Card.Img src={pokemon.sprites} id={pokemon.name} onClick={handleClick}></Card.Img>
         </Col>
         <Card.Body>
             <Accordion defaultActiveKey={[]} alwaysOpen>

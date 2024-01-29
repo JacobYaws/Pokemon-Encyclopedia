@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import { Navigate, useParams } from 'react-router-dom';
 import { QUERY_SINGLE_POKEMON } from '../utils/queries';
 import React, { useState, useEffect } from 'react';
-import { Container, Col, Row, Image } from 'react-bootstrap';
+import { Container, Col, Row, Image, Accordion } from 'react-bootstrap';
 
 const Pokemon = () => {
     const {name: name} = useParams();
@@ -80,24 +80,76 @@ const Pokemon = () => {
         <>
         {loading ? (<></>) : ( 
         <Container id="single-container">
-            <Col>
+            <Col id="single-pokemon-main">
 
             <Row>
                 <Col md='4' id="single-img-col">
                 <Image id="single-img" src={newPokeObject.sprites}>
                     </Image>
-                    <Row>
-                        {newPokeObject.name}
+                    <Row id="single-img-info">
+                        <Col >
+                            <h3 id="single-id">{newPokeObject.id}</h3>
+                        </Col>
+                        <Col>
+                            <h3 id="single-name">{newPokeObject.name}</h3>
+                        </Col>
+                        {/* <Col>
+                        ID: {newPokeObject.id}
+                        </Col> */}
                     </Row>
                     </Col>
-                    <Col>
-                    <p>More general info</p>
-                    <Row>
-                    {newPokeObject.id}
-                    </Row>
-                    <Row>
-                    {newPokeObject.abilities}
-                    </Row>
+                    <Col md='7' id="single-info-container">
+                    {/* <p>More general info</p> */}
+                    {/* <Row id="single-category">
+                    <div md='4' id="single-header">Types</div>
+                    {newPokeObject.types.map((type => (
+                        <Col md='2' id="single-type">
+                        <p>{type}</p>
+                        </Col>
+                    )))}
+                    </Row> */}
+
+                    <Accordion id="single-category">
+                        <Accordion.Header md='4' id="single-header">Types <span>({newPokeObject.types.length})</span></Accordion.Header>
+                        <Accordion.Body id="single-map">
+                    {newPokeObject.types.map((type => (
+                        <Col md='2' id="single-item">
+                        <p>{type}</p>
+                        </Col>
+                    )))}
+                    </Accordion.Body>
+                    </Accordion>
+
+                    <Accordion id="single-category">
+                        <Accordion.Header md='4' id="single-header">Abilities<span>({newPokeObject.abilities.length})</span></Accordion.Header>
+                        <Accordion.Body id="single-map">
+                    {newPokeObject.abilities.map((ability => (
+                        <Col md='2' id="single-item">
+                        <p>{ability}</p>
+                        </Col>
+                    )))}
+                    </Accordion.Body>
+                    </Accordion>
+
+
+                    <Accordion id="single-category">
+                        <Accordion.Header md='4' id="single-header">Games <span>({newPokeObject.game_indices.length})</span></Accordion.Header>
+                        <Accordion.Body id="single-map">
+                    {newPokeObject.game_indices.map((game => (
+                        <Col md='2' id="single-item">
+                        <p>{game}</p>
+                        </Col>
+                    )))}
+                    </Accordion.Body>
+                    </Accordion>
+                    {/* <Row id="single-category">
+                        <div md='4' id="single-header">Games</div>
+                    {newPokeObject.game_indices.map((game => (
+                        <Col md='2' id="single-game">
+                        <p>{game}</p>
+                        </Col>
+                    )))}
+                    </Row> */}
                     </Col>
 
             </Row>
