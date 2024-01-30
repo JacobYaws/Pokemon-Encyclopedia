@@ -24,8 +24,17 @@ code {
   min-width: 100% !important;
 }
 
+#main-brand {
+  font-size: 32px;
+  font-weight: 600;
+}
+
 #navbar-container {
   padding: 0 10%;
+}
+
+#navbarScroll {
+  margin-left: 2em;
 }
 
 #pokelist {
