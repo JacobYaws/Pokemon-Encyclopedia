@@ -316,8 +316,19 @@ code {
 
 }
 
-.accordion-button.collapsed::after, .accordion-button::after {
-  // display: none;
+#search-bar-results {
+  display: block;
+  position:absolute;
+  max-height: 200px;
+  background-color: white;
+  width: 225px;
+  z-index: 2;
+  overflow-y: scroll;
+  li {
+    list-style: none;
+    cursor: pointer;
+    padding: 0.2em
+  }
 }
 
 #single-map {
@@ -326,6 +337,7 @@ code {
   text-align: center;
   height: fit-content;
   flex-wrap: wrap;
+  overflow-y: scroll;
 }
 
 @media screen and (max-width: 992px) {

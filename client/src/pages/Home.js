@@ -20,7 +20,6 @@ const Home = () => {
         setProcessedFilterArray(filteredResultsArray)
 
     }, [data])
-    console.log(filters)
 
     let abilitiesArray = [];
     let typesArray = [];
@@ -201,7 +200,6 @@ const Home = () => {
                         displayPokemon = filterMatchCount > 0
                 }
                 })
-                console.log(displayPokemon)
                 return displayPokemon || filters.length == 0
             }).map((pokemon) => (
                 <Col id="cardcol" md='4'>
