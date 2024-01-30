@@ -2,16 +2,24 @@
 
 # dependencies
 /node_modules
+/client/node_modules
+/server/node_modules
 /.pnp
 .pnp.js
+node_modules
 
 # testing
 /coverage
 
 # production
 /build
+/seeders
 
 # misc
+.gen1EachSeeds.json
+.gen1Seeds.json
+
+.env
 .DS_Store
 .env.local
 .env.development.local
