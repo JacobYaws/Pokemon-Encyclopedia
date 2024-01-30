@@ -292,9 +292,12 @@ code {
   display: flex;
   justify-content: space-around;
   text-align: center;
-  height: fit-content;
   flex-wrap: wrap;
-  overflow-y: scroll;
+  // overflow-y: scroll;
+}
+
+#single-item {
+  height: max-content
 }
 
 @media screen and (max-width: 992px) {
