@@ -4,18 +4,15 @@ import React, { useState, useEffect } from 'react';
 import { Container, Button, Form, Nav, Navbar, Row, Col } from 'react-bootstrap'
 
 
-
 function Header() {
 
   const {data, loading, error} = useQuery(QUERY_POKEMON);
   const pokemoninfo = data?.pokemoninfo;
   const [pokemonList, setPokemonList] = useState(pokemoninfo)
   const [searching, setSearching] = useState(false);
-  let searchIO = 0;
   useEffect(() => {
     setPokemonList();
   }, [])
-
 
   const handleChange = (event) => {
     console.log(event.target.value)
@@ -33,37 +30,24 @@ function Header() {
         return name
       }
     });
-
     setPokemonList(filterSearch);
-
-  
   }
 
   const handleFormSubmit = (event) => {
     console.log(event.target.innerText)
     const search = document.getElementById('searchbar').value.toLowerCase();
     const clickEvent = event.target.innerText;
-
-    let findPokemon = pokemoninfo.find(element => {
+    pokemoninfo.find(element => {
       if (element.name === search) {
-        console.log(true)
         window.location.href = `/pokemon/${search}`
-        // return true
       } else if (element.name === clickEvent) {
         window.location.href = `/pokemon/${clickEvent}`
 
       } else {
-        console.log(false)
       }
-      
     })
-
-    
-
-    console.log(search);
-    console.log(pokemoninfo);
   }
-    console.log(pokemonList)
+
     return (
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container id="navbar-container" fluid>
@@ -80,7 +64,7 @@ function Header() {
               </Nav.Link>
             </Nav>
             <Form className="d-flex">
-              <Col >
+              <Col id="search-form">
               <Form.Control
                 id="searchbar"
                 type="search"
@@ -98,8 +82,6 @@ function Header() {
             </Col>
             </Col>
               <Button variant="outline-success" onClick={handleFormSubmit}>Search</Button>
-              
-
             </Form>
           </Navbar.Collapse>
         </Container>

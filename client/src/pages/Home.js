@@ -37,7 +37,6 @@ const Home = () => {
                     }
                 let newName = firstUpper + endName;
 
-
                 let gameIndices = element.game_indices;
                 let newGameIndicesArray = [];        
                     gameIndices.forEach(game => {
@@ -46,7 +45,6 @@ const Home = () => {
                     let newGameIndices = firstUpper + endGame
                     newGameIndicesArray.push(newGameIndices);
                 })
-
 
                 let abilities = element.abilities;
                 let newAbilitiesArray = [];        
@@ -91,25 +89,15 @@ const Home = () => {
     let abilitiesFilters = protoAbilitiesFilters.sort();
     let typesFilters = protoTypesFilters.sort();
 
-
-
-
-    // let selectedAbilityFilters = [];       SET AT TOP OF FUNCTION
-    // let selectedTypeFilters = [];          SET AT TOP OF FUNCTION
-
-           
             const handleChange = (e) => {
                 e.persist();
                 let switchName = e.target.parentElement.innerText;
                 let switchId = e.target.id;
                 let switchChecked = e.target.checked;
-                console.log(switchName)
-                console.log(switchChecked)
                 setFilterClick(!filterClick)
                 let filterObject = {filterName: switchName, filterId: switchId, filterChecked: switchChecked}
 
                 if (switchChecked === true) { 
-                    console.log("here")
                     filterArray.push(filterObject)
                     setFilters(filterArray)
                 } else {
@@ -120,7 +108,6 @@ const Home = () => {
     }
         const handleClick = (event) => {
             const targetName = event.currentTarget.id.toLowerCase();
-            console.log(targetName)
             window.location.href = `/pokemon/${targetName}`
         }
     return (
@@ -128,15 +115,13 @@ const Home = () => {
         <Row id="main-container">
             <Col id="filters" md='2'>
                 <h3 id="filters-header">Filters</h3>
-               
                 <Accordion id="filter-accordion" defaultActiveKey={[]} alwaysOpen>
                 <Accordion.Item id="filter-item" eventKey='0'>
                     <Accordion.Header className="filter-tab">Types</Accordion.Header>
                     <AccordionBody id="navbarScroll">
                         {typesFilters.map((type) => (
                             <Form>
-                            <Form.Check // prettier-ignore
-                            //   checked={checked}
+                            <Form.Check
                               type="switch"
                               id="type-switch"
                               label={`${type}`}
@@ -151,8 +136,7 @@ const Home = () => {
                     <AccordionBody>
                         {abilitiesFilters.map((ability) => (
                             <Form>
-                            <Form.Check // prettier-ignore
-                            //   checked={false ? formState}
+                            <Form.Check
                               type="switch"
                               id="ability-switch"
                               label={`${ability}`}
@@ -162,9 +146,7 @@ const Home = () => {
                         ))}
                     </AccordionBody>
                 </Accordion.Item>
-                
                 </Accordion>
-                
             </Col>
         
 
@@ -173,7 +155,6 @@ const Home = () => {
             {loading ? (
                 <></>
          ) : (
-            // <Row id="card-container">
             <Row className="card-container">
             {newPokeObjectArray?.filter((pokemon) => {
                 let displayPokemon = false

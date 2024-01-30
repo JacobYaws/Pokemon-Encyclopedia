@@ -26,8 +26,6 @@ code {
 
 #navbar-container {
   padding: 0 10%;
-  // min-width: 100% !important;
-  // background-position-y: fixed !important;
 }
 
 #pokelist {
@@ -39,9 +37,7 @@ code {
   background-color: #F7EF00;
   border-radius: 1em;
   flex-wrap: wrap;
-  // flex-grow: 1;
   align-items: center;
-  // border-style: solid;
   flex-direction: column;
 }
 
@@ -56,21 +52,11 @@ code {
 
 #cardcol {
   margin-bottom: 1em;
-  // flex-grow: 1;
-  // flex-basis:initial;
-  // min-width: 25%;
-  // width:max-content;
-  // flex-grow: initial;
 }
 
 .card-container {
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-between;
-  // align-items: space-between;
   flex-grow: 1;
   max-width: inherit;
-  // background-color: black;
 }
 
 .pokeinfo {
@@ -102,13 +88,13 @@ code {
 }
 
 .info-tab {
-.accordion-button {
-  background-image: url('./assets/background-image-2.png')
-}
+  .accordion-button {
+    background-image: url('./assets/background-image-2.png')
+  }
 
-.accordion-button:not(.collapsed) {
-  background-image: url('./assets/background-image-2.png')
-}
+  .accordion-button:not(.collapsed) {
+    background-image: url('./assets/background-image-2.png')
+  }
 }
 
 .general-info-body {
@@ -120,24 +106,16 @@ code {
   background-image: url('./assets/background-image-2.png');
  }
 
-
-
 .card-header {
   display: flex;
-  // text-align: center;
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
-  // width: 100%;
   h4 {
     font-weight: 500;
     width: inherit;
   }
 }
-
-
-
-
 
 #abilities, #games, #types {
   display: flex;
@@ -153,7 +131,6 @@ code {
 }
 
 #filters {
-  // padding: 2em;
   box-sizing: border-box;
   padding-right: 0.5em;
   padding-top: 1em;
@@ -161,7 +138,6 @@ code {
   flex-direction: column;
   background-color:#ff5454;
   min-width: percentage($number: calc(1/6));
-  // max-width: percentage($number: calc(1/6));
   position: inherit;
   text-align: center;
   padding-left: 1em;
@@ -175,9 +151,6 @@ code {
   }
 }
 
-
-
-
 #filter-accordion {
   display: flex;
   flex-direction: column;
@@ -190,18 +163,12 @@ code {
 
 .filter-tab {
   .accordion-button {
-    // background-image: url('./assets/background-image-2.png')
     background-color: #00e7dc;
     border-color: #00e7dc;
     --bs-accordion-inner-border-radius: 0;
-  font-weight: 600;
-
+    font-weight: 600;
+    }
   }
-  
-
-  }
-
-
 
 #filter-badge {
   font-size: 2px;
@@ -217,7 +184,6 @@ code {
   display: flex;
   flex-direction: column;
   background-color: #00e7dc;
-  // min-height: 100vh;
   height: fit-content;
   margin: 2em auto 2em auto;
   border-radius: 2em;
@@ -268,14 +234,12 @@ code {
 }
 
 #single-category {
-  // display: flex;
   justify-content: space-around;
 
 }
 #single-type, #single-ability {
   text-align: center;
 }
-
 
 #single-header {
   .accordion-button {
@@ -285,19 +249,16 @@ code {
     justify-content: space-between;
     height: fit-content;
   }
-  
 }
 
 .accordion-button {
   background-color: #00e7dc !important;
   box-shadow: none !important;
   gap: 0.5em;
-
 }
 
 #single-item {
   padding-top: 1em;
-  // align-items: center;
   margin: 0.5em;
   flex-shrink: 1;
   justify-content: center;
@@ -306,14 +267,10 @@ code {
   font-weight: 600;
   border-radius: 1em;
   min-width: 8em;
+}
 
-  // max-width: inherit
-  // text-align: center !important;
-  // margin: auto;
-  // padding: auto;
-  // background-color:#e7d800 ;
-  // border-style: solid;
-
+#search-form {
+  margin-right: 0.5em;
 }
 
 #search-bar-results {
@@ -361,13 +318,10 @@ code {
     gap: 2em;
   }
 
-  
-
   .accordion-body {
     height: 15em !important;
     overflow-y: scroll;
   }
-  
 }
 
 @media screen and (max-width: 576px) {
