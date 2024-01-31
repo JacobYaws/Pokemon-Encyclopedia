@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Pokemon-Encyclopedia
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+This application is an encyclopedia of Pokemon that shows some statistics for each Pokemon. 
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+[Install][#install]
+[Overview][#overview]
+[Screenshots][#screenshots]
+[Links][#links]
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Install
+To run the application locally: 
+1. Clone the repository from: git@github.com:JacobYaws/Pokemon-Encyclopedia.git
+2. Install dependencies in the app's root directory through a git CLI: 'npm install'
+3. Seed the database:
+    - To avoid making multiple unnecessary calls to the external API, I created a database for the app and seeded it with the data that would come back from the API. I currently have the first generation in the database.
+    - I created code to consume the external API and then create a JSON file with the returned data. I used the endpoint from https://pokeapi.co/docs/v2#generations to get the pokemon name and ID and then used that data with the endpoint from https://pokeapi.co/docs/v2#pokemon to get more data for each pokemon. 
+    - Once the JSON files are created, you will be able to seed the database.
+4. Run npm start from the app's root directory in the git CLI.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Overview
 
-### `npm test`
+- This app is a MERN application. GraphQL and Apollo are used for making database queries from the front-end.
+- Filters will sort the list by what is selected first and then each filter selected afterwards will show any Pokemon that contains the selected filter attribute.
+- Each Pokemon card image can be clicked and doing so will take the user to that Pokemon's stat page.  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Screenshots
 
-### `npm run build`
+<img src="./client/src/assets/screenshots/screenshot1.png">
+<img src="./client/src/assets/screenshots/screenshot2.png">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-Github: https://github.com/JacobYaws/Pokemon-Encyclopedia
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-Deployed Site: https://pure-cliffs-36309-f88e06e58469.herokuapp.com
